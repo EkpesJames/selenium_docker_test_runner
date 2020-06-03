@@ -1,0 +1,45 @@
+version: "3"
+services:
+  selenium-hub:
+    image: selenium/hub
+    ports:
+      - "4444:4444"
+    environment:
+      GRID_MAX_SESSION: 16
+      GRID_BROWSER_TIMEOUT: 300
+      GRID_TIMEOUT: 300
+  chrome:
+   image: selenium/node-chrome
+   depends_on:
+     - selenium-hub
+   environment:
+      HUB_HOST: selenium-hub
+  firefox:
+    image: selenium/node-firefox
+    shm_size: '1gb'
+    depends_on:
+      - selenium-hub
+    environment:
+      HUB_HOST: selenium-hub
+  search-module:
+    image: gridtest/selenium-dockertest
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=firefox
+      - HUB_HOST=selenium-hub
+      - MODULE=search-module.xml
+    volumes:
+      - ./search-result-ouput:/usr/share/dockerSelenium/test-output
+  book-flight-module:
+    image: gridtest/selenium-dockertest
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=selenium-hub
+      - MODULE=book-flight-module.xml
+    volumes:
+      - ./book-flight-result-ouput:/usr/share/dockerSelenium/test-output
