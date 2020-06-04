@@ -3,7 +3,7 @@ pipeline{
 	stages{
 		stage("Start Grid"){
 			steps{
-				bat "docker-compose up -d selenium-hub chrome firefox --no-color"
+				bat "docker-compose up -d selenium-hub chrome firefox"
 			}
 		}
 		stage("Run Test"){
