@@ -6,7 +6,7 @@ pipeline{
 				bat "docker-compose up -d hub chrome firefox --no-color"
 			}
 		}
-		stage("Start Grid"){
+		stage("Run Test"){
 			steps{
 				bat "docker-compose up search-module book-flight-module"
 			}
