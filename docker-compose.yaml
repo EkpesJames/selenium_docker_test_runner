@@ -25,7 +25,7 @@ services:
       - HUB_HOST=selenium-hub
       - MODULE=search-module.xml
     volumes:
-      - ./output/search-result-ouput:/usr/share/dockerSelenium/test-output
+      - ./search-result-ouput:/usr/share/dockerSelenium/test-output
   book-flight-module:
     image: gridtest/selenium-dockertest
     depends_on:
@@ -36,4 +36,4 @@ services:
       - HUB_HOST=selenium-hub
       - MODULE=book-flight-module.xml
     volumes:
-      - ./output/book-flight-result-ouput:/usr/share/dockerSelenium/test-output
+      - ./book-flight-result-ouput:/usr/share/dockerSelenium/test-output
