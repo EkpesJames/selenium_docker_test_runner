@@ -1,26 +1,15 @@
 pipeline{
 	agent any 
-	stages{
-		stage("Pull Latest Image"){
+	stages{		
+		stage("Ren Test"){
 			steps{
-				bat "docker pull gridtest/selenium-dockertest"
-			}
-		}		
-		stage("Start Grid"){
-			steps{
-				bat "docker-compose up -d selenium-hub chrome firefox"
+				bat "docker-compose up"
 			}
 		}
-		stage("Run Test"){
+		stage("Bring Grid Down"){
 			steps{
-				bat "docker-compose up search-module"
+				bat "docker-compose down"
 			}
 		}		
-	}
-	post{
-		always{
-			archiveArtifacts artifacts: 'output/**'
-			bat "docker-compose down"
-		}
 	}		
 }
