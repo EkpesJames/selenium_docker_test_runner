@@ -1,14 +1,14 @@
 pipeline{
 	agent any 
 	stages{		
-		stage("Ren Test"){
+		stage("Run Test"){
 			steps{
-				bat "docker-compose up"
+				sh "docker-compose up"
 			}
 		}
 		stage("Bring Grid Down"){
 			steps{
-				bat "docker-compose down"
+				sh "docker-compose down"
 			}
 		}		
 	}		
