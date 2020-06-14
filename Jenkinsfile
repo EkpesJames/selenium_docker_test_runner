@@ -3,24 +3,24 @@ pipeline{
 	stages{
 		stage("Pull Latest Image"){
 			steps{
-				sh "docker pull gridtest/selenium-dockertest"
+				bat "docker pull gridtest/selenium-dockertest"
 			}
 		}		
 		stage("Start Grid"){
 			steps{
-				sh "docker-compose up -d selenium-hub chrome firefox"
+				bat "docker-compose up -d selenium-hub chrome firefox"
 			}
 		}
 		stage("Run Test"){
 			steps{
-				sh "docker-compose up search-module"
+				bat "docker-compose up search-module"
 			}
 		}		
 	}
 	post{
 		always{
-			archiveArtifacts artifacts: 'output/**'
-			sh "docker-compose down"
+			archiveArtifacts artifacts: "output/**"
+			bat "docker-compose down"
 		}
 	}		
 }
