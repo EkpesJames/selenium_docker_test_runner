@@ -16,11 +16,5 @@ pipeline{
 				bat "docker-compose up search-module"
 			}
 		}		
-	}
-	post{
-		always{
-			archiveArtifacts artifacts: 'output/**'
-			bat "docker-compose down"
-		}
 	}		
 }
