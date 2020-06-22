@@ -3,7 +3,7 @@ pipeline{
 	stages{
 		stage("Run Test"){
 			steps{
-				bat "docker-compose up search-module"
+				bat "docker-compose up"
 			}
 		}
 		stage("Bring grid down"){
