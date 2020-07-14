@@ -6,9 +6,14 @@ pipeline{
 				bat "docker pull gridtest/selenium-dockertest"
 			}
 		}
+		stage("Log into the "){
+			steps{
+				bat "docker run -it --entrypoint=/bin/sh gridtest/selenium-dockertest"
+			}
+		}		
 		stage("Convert file"){
 			steps{
-				bat "dos2unix healthcheck.sh"
+				bat "dos2unix ./usr/share/dockerSelenium/healthcheck.sh"
 			}
 		}				
 		stage("Start Grid"){
