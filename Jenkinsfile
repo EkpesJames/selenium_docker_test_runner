@@ -5,11 +5,6 @@ pipeline{
 			steps{
 				bat "docker pull gridtest/selenium-dockertest"
 			}
-		}
-		stage("Log into the "){
-			steps{
-				bat "docker run -it --entrypoint=/bin/sh gridtest/selenium-dockertest"
-			}
 		}		
 		stage("Convert file"){
 			steps{
