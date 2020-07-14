@@ -5,12 +5,7 @@ pipeline{
 			steps{
 				bat "docker pull gridtest/selenium-dockertest"
 			}
-		}		
-		stage("Convert file"){
-			steps{
-				bat "dos2unix ./healthcheck.sh"
-			}
-		}				
+		}					
 		stage("Start Grid"){
 			steps{
 				bat "docker-compose up -d selenium-hub chrome firefox"
