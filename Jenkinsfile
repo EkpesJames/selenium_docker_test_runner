@@ -8,7 +8,7 @@ pipeline{
 		}		
 		stage("Convert file"){
 			steps{
-				bat "dos2unix ./usr/share/dockerSelenium/healthcheck.sh"
+				bat "dos2unix ./healthcheck.sh"
 			}
 		}				
 		stage("Start Grid"){
