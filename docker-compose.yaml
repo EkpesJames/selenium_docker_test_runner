@@ -26,7 +26,6 @@ services:
       - MODULE=search-module.xml
     volumes:
       - ./output/search-result-ouput:/usr/share/dockerSelenium/test-output
-      - ./extent-report:/usr/share/dockerSelenium/ExtentReport
   book-flight-module:
     image: gridtest/selenium-dockertest
     depends_on:
@@ -38,4 +37,3 @@ services:
       - MODULE=book-flight-module.xml
     volumes:
       - ./output/book-flight-result-ouput:/usr/share/dockerSelenium/test-output
-      - ./extent-report:/usr/share/dockerSelenium/ExtentReport
