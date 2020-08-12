@@ -13,7 +13,7 @@ pipeline{
 		}
 		stage("Stop Grid"){
 			steps{
-				bat "docker-compose up down"
+				bat "docker-compose down"
 			}
 		}				
 	}	

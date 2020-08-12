@@ -2,19 +2,21 @@ version: "3"
 services:
   selenium-hub:
     image: selenium/hub:3.141.59
+    ports:
+     - "4444:4444"
   chrome:
-   image: selenium/node-chrome:3.141.59
-   depends_on:
+    image: selenium/node-chrome:3.141.59      
+    depends_on:
      - selenium-hub
-   environment:
-      HUB_HOST: selenium-hub
+    environment:
+      HUB_HOST: selenium-hub 
   firefox:
-    image: selenium/node-firefox:3.141.59
+    image: selenium/node-firefox:3.141.59        
     shm_size: '1gb'
     depends_on:
       - selenium-hub
     environment:
-      HUB_HOST: selenium-hub
+      HUB_HOST: selenium-hub 
   search-module:
     image: gridtest/selenium-dockertest
     depends_on:
@@ -26,6 +28,7 @@ services:
       - MODULE=search-module.xml
     volumes:
       - ./output/search-result-ouput:/usr/share/dockerSelenium/test-output
+      - ./extent-report/firefox:/usr/share/dockerSelenium/ExtentReport
   book-flight-module:
     image: gridtest/selenium-dockertest
     depends_on:
@@ -37,3 +40,4 @@ services:
       - MODULE=book-flight-module.xml
     volumes:
       - ./output/book-flight-result-ouput:/usr/share/dockerSelenium/test-output
+      - ./extent-report/chrome:/usr/share/dockerSelenium/ExtentReport
