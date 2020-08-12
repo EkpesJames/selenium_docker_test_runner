@@ -1,6 +1,11 @@
 pipeline{
 	agent any 
-	stages{	
+	stages{
+		stage("Pull Latest Image"){
+			steps{
+				bat "docker pull gridtest/selenium-dockertest:testWorks"
+			}
+		}		
 		stage("Start Grid"){
 			steps{
 				bat "docker-compose up -d selenium-hub chrome firefox"
